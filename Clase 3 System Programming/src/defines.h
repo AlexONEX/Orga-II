@@ -35,15 +35,17 @@
 /* -------------------------------------------------------------------------- */
 #define GDT_OFF_NULL_DESC (GDT_IDX_NULL_DESC << 3)
 #define GDT_OFF_VIDEO  (GDT_IDX_VIDEO << 3)
+#define GDT_OFF_CODE_3 (GDT_IDX_CODE_3 << 3)
+#define GDT_OFF_DATA_3 (GDT_DATA_CODE_3 << 3)
 
 /* COMPLETAR - Valores para los selectores de segmento de la GDT */
 /* Notar que << hace un shift a la izquierda una cantidad X de bits */
 /* en este caso, esta shifteando 3 bits, ¿por que? */
 #define GDT_CODE_0_SEL (GDT_IDX_CODE_0 << 3)
-#define GDT_DATA_0_SEL // <COMPLETAR>
+#define GDT_DATA_0_SEL (GDT_IDX_DATA_0 << 3)         // <COMPLETAR>
 /* | simboliza el OR en bits. Dado que es nivel 3 precisamos que los últimos 2 bits sea el privilegio 0x3*/
-#define GDT_CODE_3_SEL ((GDT_OFF_CODE_3) | //<COMPLETAR> )
-#define GDT_DATA_3_SEL // <COMPLETAR>
+#define GDT_CODE_3_SEL ((GDT_OFF_CODE_3) | 0x3)
+#define GDT_DATA_3_SEL ((GDT_OFF_DATA_3) | 0x3)   //Raro, preguntar. 
 
 
 

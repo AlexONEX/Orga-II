@@ -1,10 +1,10 @@
 ;########### ESTA ES LA FORMA DE DEFINIR CONSTANTES EN ASM (NOMBRE EQU VALOR)
 ;########### ESTOS SON LOS OFFSETS Y TAMAÑO DEL STRUCT ALINEADO
-;COMPLEX_ITEM_LENGTH	EQU	0 ;?? completar valor
-;COMPLEX_ITEM_Z_OFFSET	EQU	0 ;?? completar valor
+COMPLEX_ITEM_LENGTH	EQU	32 ;?? completar valor porque no estan packed, entonces para padear 8 con 4 le agrego 4, asi cada uno. 32. 
+COMPLEX_ITEM_Z_OFFSET	EQU	24 ;?? completar valor
 ;########### ESTOS SON LOS OFFSETS Y TAMAÑO DEL STRUCT EMPAQUETADO
-;PACKED_COMPLEX_ITEM_LENGTH	EQU	0 ;?? completar valor
-;PACKED_COMPLEX_ITEM_Z_OFFSET	EQU	0 ;?? completar valor
+PACKED_COMPLEX_ITEM_LENGTH	EQU	24 ;?? completar valor
+PACKED_COMPLEX_ITEM_Z_OFFSET	EQU	20 ;?? completar valor
 
 
 ;########### LISTA DE FUNCIONES IMPORTADAS
@@ -46,15 +46,15 @@ complex_sum_z:
 			; observar que no utilizamos registros no volátiles
 			; caso contrario tendríamos que haberlos preservado
 ;COMPLETAR:
-;.cycle:			; etiqueta a donde retorna el ciclo que itera sobre arr
+.cycle:			; etiqueta a donde retorna el ciclo que itera sobre arr
 
 			; rbx es la base que apunta al comienzo del arreglo (arr)
 			; rsi es el desplazamiento que nos lleva al elemento actual (i * sizeof(simple_item))
 			; ? es la ubicación del atributo respecto del comienzo del struct
-;	add eax, [rbx + rsi + ?]	; des referenciamos el puntero que apunta a la posicion
-;					; del atributo z del i-ésimo elemento
-;	add rsi, ?			; avanzamos el registro de desplazamiento esi
-;	loop .cycle			; decrementa ecx y si es distinto de 0 salta a .cycle
+	add eax, [rbx + rsi + PACKED_COMPLEX_ITEM_Z_OFFSET]	; des referenciamos el puntero que apunta a la posicion
+					; del atributo z del i-ésimo elemento
+	add rsi, COMPLEX_ITEM_LENGTH			; avanzamos el registro de desplazamiento esi
+	loop .cycle			; decrementa ecx y si es distinto de 0 salta a .cycle
 
 	
 	;epilogo
@@ -103,8 +103,8 @@ packed_complex_sum_z:
 ;, uint32_t x5, float f5, uint32_t x6, float f6, uint32_t x7, float f7, uint32_t x8, float f8
 ;, uint32_t x9, float f9);
 ;registros y pila: destination[rdi], x1[rsi], f1[xmm0], x2[rdx], f2[xmm1], x3[rcx], f3[xmm2], x4[r8], f4[xmm3]
-;	, x5[r9], f5[xmm4], x6[rbp+0x10], f6[xmm5], x7[rbp + 0x18], f7[?], x8[?], f8[?],
-;	, x9[?], f9[?]
+;	, x5[r9], f5[xmm4], x6[rbp+0x10], f6[xmm5], x7[rbp + 0x18], f7[xmm6], x8[rbp + 0x20], f8[xmm7],
+;	, x9[rbp´+ 0x28], f9[rbp + 0x30]
 product_9_f:
 	push rbp
 	mov rbp, rsp
@@ -114,17 +114,17 @@ product_9_f:
 	cvtss2sd xmm2, xmm2	
 	cvtss2sd xmm3, xmm3	
 	cvtss2sd xmm4, xmm4	
-;	cvtss2sd ?,?
-;	cvtss2sd ?,?
-;	cvtss2sd ?,?
+	cvtss2sd xmm5, xmm5
+	cvtss2sd xmm6, xmm6
+	cvtss2sd xmm7, xmm7
 	mulsd xmm0, xmm1	;multiplicamos los doubles xmm0 <- xmm0 * xmm1
 	mulsd xmm0, xmm2
 	mulsd xmm0, xmm3
 	mulsd xmm0, xmm4
-;	mulsd xmm0, ?
-;	mulsd xmm0, ?
-;	mulsd xmm0, ?
-;	cvtss2sd xmm1, [?]	;convertimos el float que falta desde memoria (f9)
+	mulsd xmm0, xmm5
+	mulsd xmm0, xmm6
+	mulsd xmm0, xmm7
+	cvtss2sd xmm1, [rbp + 0x30]	;convertimos el float que falta desde memoria (f9)
 	mulsd xmm0, xmm1	;multiplicamos los doubles xmm0 <- xmm0 * xmm1	
 	xor rax, rax
 	mov eax, esi		;limpiamos rax y cargamos x1 (esi ) en la parte baja
@@ -142,21 +142,21 @@ product_9_f:
 	mov eax, r9d		
 	cvtsi2sd xmm1, rax	
 	mulsd xmm0, xmm1	
-;	mov eax, [?]		;x6
-;	cvtsi2sd xmm1, rax	
-;	mulsd xmm0, xmm1	
-;	mov eax, [?]		;x7
-;	cvtsi2sd xmm1, rax	
-;	mulsd xmm0, xmm1		
-;	mov eax, [?]		;x8
-;	cvtsi2sd xmm1, rax	
-;	mulsd xmm0, xmm1
-;	mov eax, [?]		;x9
-;	cvtsi2sd xmm1, rax	
-;	mulsd xmm0, xmm1
+	mov eax, [rbp+0x10]		;x6
+	cvtsi2sd xmm1, rax	
+	mulsd xmm0, xmm1	
+	mov eax, [rbp + 0x18]		;x7
+	cvtsi2sd xmm1, rax	
+	mulsd xmm0, xmm1		
+	mov eax, [rbp + 0x20]		;x8
+	cvtsi2sd xmm1, rax	
+	mulsd xmm0, xmm1
+	mov eax, [rbp + 0x28]		;x9
+	cvtsi2sd xmm1, rax	
+	mulsd xmm0, xmm1
 
 	movq [rdi], xmm0	
-	
 	pop rbp
+	
 	ret
 

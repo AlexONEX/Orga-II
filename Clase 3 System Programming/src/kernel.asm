@@ -4,7 +4,6 @@
 ; ==============================================================================
 
 %include "print.mac"
-
 global start
 
 extern GDT_DESC
@@ -35,15 +34,14 @@ start_pm_len equ    $ - start_pm_msg
 BITS 16
 start:
     ; Deshabilitar interrupciones
-    ; <COMPLETAR>  1 línea
     cli
+    ; <COMPLETAR>  1 línea
     ; Cambiar modo de video a 80 X 50
     mov ax, 0003h
     int 10h ; set mode 03h
     xor bx, bx
     mov ax, 1112h
     int 10h ; load 8x8 font
-
 
     ; Imprimir mensaje de bienvenida
     print_text_rm start_rm_msg, start_rm_len, 0x07, 0, 0
@@ -58,7 +56,7 @@ start:
     lgdt [GDT_DESC]; ? 
     ;  Setear el bit PE del registro CR0
     mov eax, cr0
-    or al, 1       ; set PE (Protection Enable) bit in CR0 (Control Register 0)
+    or al, 1       
     mov cr0, eax
     ; Saltar a modo protegido
     ; Hacemos un salto largo (far jump) y pasamos al codigo de modo protegido, 
@@ -72,10 +70,16 @@ modo_protegido:
     ; Establecer selectores de segmentos DS, ES, GS, FS y SS en el segmento de datos de nivel 0
     ; Pueden usar la constante DS_RING_0_SEL definida en este archivo
     ; <COMPLETAR> ~ 6 lineas   
-	
-    ; Establecer el tope y la base de la pila
-    ; <COMPLETAR> ~ 2 lineas   
+	MOV   AX, DS_RING_0_SEL ; Consultar. 
+    MOV   DS, AX
+    MOV   ES, AX
+    MOV   FS, AX
+    MOV   GS, AX
+    MOV   SS, AX
 
+    ; Establecer el tope y la base de la pila
+    MOV ESP, 0x25000        ; Base = Techo?
+    MOV EBP, 0x0
     ; Imprimir mensaje de bienvenida
     print_text_pm start_pm_msg, start_pm_len, 0x07, 4, 0
 
