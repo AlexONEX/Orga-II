@@ -70,6 +70,28 @@ void screen_draw_box(uint32_t fInit, uint32_t cInit, uint32_t fSize,
   }
 }
 
+void draw_string_at(char *nombre, uint32_t pos, uint8_t attr) {
+  ca(*p)[VIDEO_COLS] = (ca(*)[VIDEO_COLS])VIDEO; 
+  for(int f = 0; nombre[f]; ++f) {
+    p[f][pos].c = nombre[f];
+    p[f][pos].a = attr;
+  }
+}
+
 void screen_draw_layout(void) {
-  /* COMPLETAR */
+  uint32_t i = 0;
+  uint32_t pos = 0;
+  while(1) {
+    i++;
+    if(i == 10000000) {
+      pos++;
+      pos = pos % 10;
+      i = 0;
+      screen_draw_box(0, 0, VIDEO_FILS, VIDEO_COLS, ' ', 0);
+      draw_string_at("Alejandro", pos, C_FG_RED);
+      draw_string_at("Charles", pos+1, C_FG_WHITE);
+      draw_string_at("Maximiliano Camara", pos+2, C_FG_LIGHT_MAGENTA);
+      draw_string_at("Martin", pos+3, C_FG_CYAN);
+    }
+  }
 }
