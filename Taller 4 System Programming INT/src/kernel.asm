@@ -97,12 +97,14 @@ modo_protegido:
 
     ; inicializar IDT
     ; Cargar IDT
-
+    call idt_init
+    lidt [IDT_DESC]
     ; ------------------
 
     ; -- CHECKPOINT 3 --
 
     ; habilitar interrupciones
+    sti 
     ; Opcional: hacer una división por cero para probar o usar la instrucción INT (RECORDAR LUEGO BORRAR o COMENTAR LA PRUEBA)
 
     ; ------------------

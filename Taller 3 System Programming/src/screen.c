@@ -36,8 +36,7 @@ void print_dec(uint32_t numero, uint32_t size, uint32_t x, uint32_t y,
   }
 }
 
-void print_hex(uint32_t numero, int32_t size, uint32_t x, uint32_t y,
-               uint16_t attr) {
+void print_hex(uint32_t numero, int32_t size, uint32_t x, uint32_t y, uint16_t attr) {
   ca(*p)[VIDEO_COLS] = (ca(*)[VIDEO_COLS])VIDEO; 
   int32_t i;
   uint8_t hexa[8];
