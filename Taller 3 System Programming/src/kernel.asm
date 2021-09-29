@@ -79,8 +79,7 @@ modo_protegido:
 
     ; Establecer el tope y la base de la pila
     MOV ESP, 0x25000        ; Base = Techo?
-    MOV EBP, 0x25000
-    xchg bx, bx 
+    MOV EBP, 0x0
     ; Imprimir mensaje de bienvenida
     print_text_pm start_pm_msg, start_pm_len, 0x07, 4, 0
 
