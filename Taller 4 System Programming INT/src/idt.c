@@ -31,16 +31,16 @@ idt_descriptor_t IDT_DESC = {sizeof(idt) - 1, (uint32_t)&idt};
 
 
 #define IDT_ENTRY0(numero)\
-    idt[numero].offset_15_0 = (uint16_t) ((uint32_t)(&_isr ## numero) & (uint32_t) 0xFFFF);\ 
-    idt[numero].segsel = (uint16_t) 0x01;\ 
-    idt[numero].attr = (uint16_t) 0x8E00;\ 
+    idt[numero].offset_15_0 = (uint16_t) ((uint32_t)(&_isr ## numero) & (uint32_t) 0xFFFF);\
+    idt[numero].segsel = (uint16_t) 0x01;\
+    idt[numero].attr = (uint16_t) 0x8E00;\
     idt[numero].offset_31_16 = (uint16_t) ((uint32_t)(&_isr##numero) >> 16 & (uint32_t) 0xFFFF);\
 
 
-#define IDT_ENTRY3(numero)\                                                     
-  idt[numero].offset_15_0 = (uint16_t)((uint32_t)(&_isr##numero) & (uint32_t)0xFFFF);\                
-  idt[numero].segsel = (uint16_t) 0x02;\                                        
-  idt[numero].attr = (uint16_t) 0xEE00;\                                        
+#define IDT_ENTRY3(numero)\
+  idt[numero].offset_15_0 = (uint16_t)((uint32_t)(&_isr##numero) & (uint32_t)0xFFFF);\
+  idt[numero].segsel = (uint16_t) 0x02;\
+  idt[numero].attr = (uint16_t) 0xEE00;\
   idt[numero].offset_31_16 =  (uint16_t)((uint32_t)(&_isr##numero) >> 16 & (uint32_t)0xFFFF);\
 
 void idt_init() {
@@ -68,7 +68,8 @@ void idt_init() {
   IDT_ENTRY0(20);
   
   // Interrupciones
-
+  IDT_ENTRY0(32);
+  IDT_ENTRY0(33);
   // Syscalls  
   IDT_ENTRY3(88);
   IDT_ENTRY3(98);

@@ -91,10 +91,7 @@ modo_protegido:
     call pic_reset
     call pic_enable
 
-    ; -- COMPLETAR --
-    
     ; -- CHECKPOINT 2 --
-
     ; inicializar IDT
     ; Cargar IDT
     call idt_init
