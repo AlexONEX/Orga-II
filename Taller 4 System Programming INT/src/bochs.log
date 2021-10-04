@@ -1,0 +1,287 @@
+00000000000d[SIM   ] searching for component 'log' in list 'bochs'
+00000000000d[SIM   ] searching for component 'prefix' in list 'log'
+00000000000i[      ] Bochs x86 Emulator 2.6.9
+00000000000i[      ]   Built from SVN snapshot on April 9, 2017
+00000000000i[      ] Compiled on Sep 29 2021 at 11:42:31
+00000000000i[      ] System configuration
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'n_threads' in list 'cpu'
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'n_cores' in list 'cpu'
+00000000000i[      ]   processors: 1 (cores=1, HT threads=1)
+00000000000i[      ]   A20 line support: yes
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'msrs' in list 'cpu'
+00000000000i[      ]   load configurable MSRs from file "msrs.def"
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'ips' in list 'cpu'
+00000000000i[      ] IPS is set to 5000000
+00000000000i[      ] CPU configuration
+00000000000i[      ]   SMP support: no
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'model' in list 'cpu'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'level' in list 'cpuid'
+00000000000i[      ]   level: 6
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'apic' in list 'cpuid'
+00000000000i[      ]   APIC support: xapic
+00000000000i[      ]   FPU support: yes
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'mmx' in list 'cpuid'
+00000000000i[      ]   MMX support: yes
+00000000000i[      ]   3dnow! support: no
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'sep' in list 'cpuid'
+00000000000i[      ]   SEP support: yes
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'simd' in list 'cpuid'
+00000000000i[      ]   SIMD support: sse2
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'xsave' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'xsaveopt' in list 'cpuid'
+00000000000i[      ]   XSAVE support: no 
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'aes' in list 'cpuid'
+00000000000i[      ]   AES support: no
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'sha' in list 'cpuid'
+00000000000i[      ]   SHA support: no
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'movbe' in list 'cpuid'
+00000000000i[      ]   MOVBE support: no
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'adx' in list 'cpuid'
+00000000000i[      ]   ADX support: no
+00000000000i[      ]   x86-64 support: no
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'mwait' in list 'cpuid'
+00000000000i[      ]   MWAIT support: yes
+00000000000i[      ] Optimization configuration
+00000000000i[      ]   RepeatSpeedups support: no
+00000000000i[      ]   Fast function calls: no
+00000000000i[      ]   Handlers Chaining speedups: no
+00000000000i[      ] Devices configuration
+00000000000i[      ]   PCI support: i440FX i430FX
+00000000000i[      ]   Networking: no
+00000000000i[      ]   Sound support: no
+00000000000i[      ]   USB support: no
+00000000000i[      ]   VGA extension support: vbe
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'standard' in list 'memory'
+00000000000d[SIM   ] searching for component 'rom' in list 'standard'
+00000000000d[SIM   ] searching for component 'file' in list 'rom'
+00000000000d[SIM   ] searching for component 'general' in list 'bochs'
+00000000000d[SIM   ] searching for component 'benchmark' in list 'general'
+00000000000d[SIM   ] searching for component 'general' in list 'bochs'
+00000000000d[SIM   ] searching for component 'dumpstats' in list 'general'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'standard' in list 'memory'
+00000000000d[SIM   ] searching for component 'ram' in list 'standard'
+00000000000d[SIM   ] searching for component 'size' in list 'ram'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'standard' in list 'memory'
+00000000000d[SIM   ] searching for component 'ram' in list 'standard'
+00000000000d[SIM   ] searching for component 'host_size' in list 'ram'
+00000000000d[MEM0  ] Init $Id: misc_mem.cc 13071 2017-02-14 20:11:58Z vruppert $
+00000000000i[MEM0  ] allocated memory at 0x7fa580a12010. after alignment, vector=0x7fa580a13000
+00000000000i[MEM0  ] 256,00MB
+00000000000i[MEM0  ] mem block size = 0x00020000, blocks=2048
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'enabled' in list 'pci'
+00000000000d[SIM   ] searching for component 'bochs' in list 'bochs'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'standard' in list 'memory'
+00000000000d[SIM   ] searching for component 'rom' in list 'standard'
+00000000000d[SIM   ] searching for component 'address' in list 'rom'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'standard' in list 'memory'
+00000000000d[SIM   ] searching for component 'rom' in list 'standard'
+00000000000d[SIM   ] searching for component 'file' in list 'rom'
+00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('/home/schwartzmann/bochs/share/bochs/BIOS-bochs-latest')
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'optrom' in list 'memory'
+00000000000d[SIM   ] searching for component '1' in list 'optrom'
+00000000000d[SIM   ] searching for component 'file' in list '1'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'optrom' in list 'memory'
+00000000000d[SIM   ] searching for component '2' in list 'optrom'
+00000000000d[SIM   ] searching for component 'file' in list '2'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'optrom' in list 'memory'
+00000000000d[SIM   ] searching for component '3' in list 'optrom'
+00000000000d[SIM   ] searching for component 'file' in list '3'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'optrom' in list 'memory'
+00000000000d[SIM   ] searching for component '4' in list 'optrom'
+00000000000d[SIM   ] searching for component 'file' in list '4'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'optram' in list 'memory'
+00000000000d[SIM   ] searching for component '1' in list 'optram'
+00000000000d[SIM   ] searching for component 'file' in list '1'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'optram' in list 'memory'
+00000000000d[SIM   ] searching for component '2' in list 'optram'
+00000000000d[SIM   ] searching for component 'file' in list '2'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'optram' in list 'memory'
+00000000000d[SIM   ] searching for component '3' in list 'optram'
+00000000000d[SIM   ] searching for component 'file' in list '3'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'optram' in list 'memory'
+00000000000d[SIM   ] searching for component '4' in list 'optram'
+00000000000d[SIM   ] searching for component 'file' in list '4'
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'model' in list 'cpu'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'level' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'mmx' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'apic' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'mwait' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'simd' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'sse4a' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'misaligned_sse' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'sep' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'xsave' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'xsaveopt' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'aes' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'sha' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'movbe' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'adx' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'smep' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpuid' in list 'bochs'
+00000000000d[SIM   ] searching for component 'smap' in list 'cpuid'
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'cpuid_limit_winnt' in list 'cpu'
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'msrs' in list 'cpu'
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'ignore_bad_msrs' in list 'cpu'
+00000000000d[CPU0  ] #(0)all sanity checks passed!
+00000000000d[SIM   ] searching for component 'bochs' in list 'bochs'
+00000000000d[DEV   ] Init $Id: devices.cc 13167 2017-03-31 21:32:58Z vruppert $
+00000000000d[SIM   ] searching for component 'keyboard_mouse' in list 'bochs'
+00000000000d[SIM   ] searching for component 'mouse' in list 'keyboard_mouse'
+00000000000d[SIM   ] searching for component 'enabled' in list 'mouse'
+00000000000d[SIM   ] searching for component 'keyboard_mouse' in list 'bochs'
+00000000000d[SIM   ] searching for component 'mouse' in list 'keyboard_mouse'
+00000000000d[SIM   ] searching for component 'type' in list 'mouse'
+00000000000d[SIM   ] searching for component 'cpu' in list 'bochs'
+00000000000d[SIM   ] searching for component 'ips' in list 'cpu'
+00000000000d[VTIMER] Timer #0 ('Null Timer #1') using standard mode
+00000000000d[VTIMER] Timer #1 ('Null Timer #2') using realtime synchronisation mode
+00000000000d[SYS   ] timer id 3 registered for 'Virtual Timer #0'
+00000000000d[SYS   ] timer id 4 registered for 'Virtual Timer #1'
+00000000000d[SIM   ] searching for component 'clock_cmos' in list 'bochs'
+00000000000d[SIM   ] searching for component 'clock_sync' in list 'clock_cmos'
+00000000000d[SIM   ] searching for component 'clock_cmos' in list 'bochs'
+00000000000d[SIM   ] searching for component 'clock_sync' in list 'clock_cmos'
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'enabled' in list 'pci'
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'chipset' in list 'pci'
+00000000000d[PIT81 ] Setting read_state to LSB
+00000000000d[PIT81 ] Setting read_state to LSB
+00000000000d[PIT81 ] Setting read_state to LSB
+00000000000d[SIM   ] searching for component 'display' in list 'bochs'
+00000000000d[SIM   ] searching for component 'vga_extension' in list 'display'
+00000000000d[SIM   ] searching for component 'ata' in list 'bochs'
+00000000000d[SIM   ] searching for component '0' in list 'ata'
+00000000000d[SIM   ] searching for component 'resources' in list '0'
+00000000000d[SIM   ] searching for component 'enabled' in list 'resources'
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'standard' in list 'memory'
+00000000000d[SIM   ] searching for component 'rom' in list 'standard'
+00000000000d[SIM   ] searching for component 'options' in list 'rom'
+00000000000d[SYS   ] timer id 5 registered for 'devices.cc'
+00000000000i[PLUGIN] init_dev of 'pci' plugin device by virtual method
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'chipset' in list 'pci'
+00000000000i[DEV   ] i440FX PMC present at device 0, function 0
+00000000000d[SIM   ] searching for component 'memory' in list 'bochs'
+00000000000d[SIM   ] searching for component 'standard' in list 'memory'
+00000000000d[SIM   ] searching for component 'ram' in list 'standard'
+00000000000d[SIM   ] searching for component 'size' in list 'ram'
+00000000000i[PLUGIN] init_dev of 'pci2isa' plugin device by virtual method
+00000000000i[DEV   ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'chipset' in list 'pci'
+00000000000i[PLUGIN] init_dev of 'cmos' plugin device by virtual method
+00000000000d[CMOS  ] Init $Id: cmos.cc 13051 2017-01-28 09:52:09Z vruppert $
+00000000000d[SIM   ] searching for component 'clock_cmos' in list 'bochs'
+00000000000d[SIM   ] searching for component 'clock_sync' in list 'clock_cmos'
+00000000000d[SYS   ] timer id 6 registered for 'cmos'
+00000000000d[VTIMER] Timer #2 ('cmos') using standard mode
+00000000000d[SYS   ] timer id 7 registered for 'cmos'
+00000000000d[SIM   ] searching for component 'clock_cmos' in list 'bochs'
+00000000000d[SIM   ] searching for component 'time0' in list 'clock_cmos'
+00000000000i[CMOS  ] Using local time for initial clock
+00000000000d[SIM   ] searching for component 'clock_cmos' in list 'bochs'
+00000000000d[SIM   ] searching for component 'cmosimage' in list 'clock_cmos'
+00000000000d[SIM   ] searching for component 'enabled' in list 'cmosimage'
+00000000000i[CMOS  ] Setting initial clock to: Mon Oct  4 20:43:05 2021 (time0=1633390985)
+00000000000i[PLUGIN] init_dev of 'dma' plugin device by virtual method
+00000000000d[DMA   ] Init $Id: dma.cc 13051 2017-01-28 09:52:09Z vruppert $
+00000000000i[DMA   ] channel 4 used by cascade
+00000000000i[PLUGIN] init_dev of 'pic' plugin device by virtual method
+00000000000i[PLUGIN] init_dev of 'pit' plugin device by virtual method
+00000000000d[SIM   ] searching for component 'clock_cmos' in list 'bochs'
+00000000000d[SIM   ] searching for component 'clock_sync' in list 'clock_cmos'
+00000000000d[PIT   ] starting init
+00000000000d[PIT81 ] Setting read_state to LSB
+00000000000d[PIT81 ] Setting read_state to LSB
+00000000000d[PIT81 ] Setting read_state to LSB
+00000000000d[VTIMER] Timer #3 ('pit') using standard mode
+00000000000d[PIT   ] RESETting timer.
+00000000000d[PIT   ] deactivated timer.
+00000000000d[PIT   ] finished init
+00000000000d[PIT   ] s.last_usec=0
+00000000000d[PIT   ] s.timer_id=3
+00000000000d[PIT   ] s.timer.get_next_event_time=0
+00000000000d[PIT   ] s.last_next_event_time=0
+00000000000i[PLUGIN] init_dev of 'vga' plugin device by virtual method
+00000000000d[SIM   ] searching for component 'display' in list 'bochs'
+00000000000d[SIM   ] searching for component 'vga_extension' in list 'display'
+00000000000i[MEM0  ] Register memory access handlers: 0x0000000a0000 - 0x0000000bffff
+00000000000d[SIM   ] searching for component 'display' in list 'bochs'
+00000000000d[SIM   ] searching for component 'vga_realtime' in list 'display'
+00000000000d[SIM   ] searching for component 'display' in list 'bochs'
+00000000000d[SIM   ] searching for component 'vga_update_frequency' in list 'display'
+00000000000i[VGA   ] interval=200000, mode=realtime
+00000000000d[VTIMER] Timer #4 ('vga') using realtime synchronisation mode
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'enabled' in list 'pci'
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'slot' in list 'pci'
+00000000000d[SIM   ] searching for component '1' in list 'slot'
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'slot' in list 'pci'
+00000000000d[SIM   ] searching for component '2' in list 'slot'
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'slot' in list 'pci'
+00000000000d[SIM   ] searching for component '3' in list 'slot'
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'slot' in list 'pci'
+00000000000d[SIM   ] searching for component '4' in list 'slot'
+00000000000d[SIM   ] searching for component 'pci' in list 'bochs'
+00000000000d[SIM   ] searching for component 'slot' in list 'pci'
+00000000000d[SIM   ] searching for component '5' in list 'slot'
+00000000000d[SIM   ] searching for component 'display' in list 'bochs'
+00000000000d[SIM   ] searching for component 'vga_extension' in list 'display'
+00000000000i[MEM0  ] Register memory access handlers: 0x0000e0000000 - 0x0000e0ffffff
+00000000000p[GUI   ] >>PANIC<< Cannot connect to X display
