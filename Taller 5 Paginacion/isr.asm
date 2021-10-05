@@ -10,8 +10,10 @@
 
 BITS 32
 
+
 ;; PIC
 extern pic_finish1
+
 extern kernel_exception
 
 extern printScanCode
@@ -31,12 +33,12 @@ _isr%1:
     push DWORD %1
     ; Stack State:
     ; [ INTERRUPT #] esp
-    ; [ ??         ] esp + 0x04
-    ; [ ??         ] esp + 0x08
-    ; [ ??         ] esp + 0x0c
-    ; [ ??         ] esp + 0x10
-    ; [ ??         ] esp + 0x14 (if DPL(cs) == 3)
-    ; [ ??         ] esp + 0x18 (if DPL(cs) == 3)
+    ; [ ERROR CODE ] esp + 0x04
+    ; [ EIP        ] esp + 0x08
+    ; [ CS         ] esp + 0x0c
+    ; [ EFLAGS     ] esp + 0x10
+    ; [ ESP        ] esp + 0x14 (if DPL(cs) == 3)
+    ; [ SS         ] esp + 0x18 (if DPL(cs) == 3)
 
     ; GREGS
     pushad
@@ -133,9 +135,10 @@ _isr32:
     pushad
     call pic_finish1
     call next_clock
+
+    .fin:
     popad
     iret
-
 ;; Rutina de atención del TECLADO
 ;; -------------------------------------------------------------------------- ;;
 global _isr33
@@ -144,17 +147,16 @@ _isr33:
     pushad
     call pic_finish1
     in al, 0x60
+
     push eax
     call printScanCode
     add esp, 4
+
     popad
     iret
-
-
-
 ;; Rutinas de atención de las SYSCALLS
 ;; -------------------------------------------------------------------------- ;;
-; Completar
+
 global _isr88
 
 _isr88:
@@ -164,8 +166,9 @@ _isr88:
 global _isr98
 
 _isr98:
-    mov eax, 0x58; no uso popad ni pushad 
+    mov eax, 0x62
     iret
+
 
 ; PushAD Order
 %define offset_EAX 28

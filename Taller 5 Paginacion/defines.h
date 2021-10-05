@@ -9,6 +9,31 @@
 #ifndef __DEFINES_H__
 #define __DEFINES_H__
 
+/* MMU */
+/* -------------------------------------------------------------------------- */
+#define VIRT_PAGE_OFFSET(X) ((X)&0xFFF)
+#define VIRT_PAGE_TABLE(X)  (((X) >> 12) & 0x03FF)
+#define VIRT_PAGE_DIR(X)    (((X) >> 22) & 0x03FF)
+#define CR3_TO_PAGE_DIR(X)  ((X) & (~0xFFF))
+#define MMU_ENTRY_PADDR(X)  ((X) << 12)
+
+#define MMU_P (1 << 0)
+#define MMU_W (1 << 1)
+#define MMU_U (1 << 2)
+
+#define PAGE_SIZE 4096
+
+// direccion virtual del codigo
+#define TASK_CODE_VIRTUAL 0x08000000
+#define TASK_CODE_PAGES   2
+#define TASK_STACK_BASE   0x08003000
+
+/* Direcciones fisicas de directorios y tablas de paginas del KERNEL */
+/* -------------------------------------------------------------------------- */
+#define KERNEL_PAGE_DIR     (0x00025000)
+#define KERNEL_PAGE_TABLE_0 (0x00026000)
+#define KERNEL_STACK        (0x00025000)
+
 /* Misc */
 /* -------------------------------------------------------------------------- */
 // Y Filas
@@ -68,6 +93,9 @@
 
 #define FLAT_SEGM_SIZE  (817U * (1 << 20))
 #define VIDEO_SEGM_SIZE (80U * 50 * 2)
+
+#define INTERRUPT_GATE_0_ATTRS 0x8E00
+#define INTERRUPT_GATE_3_ATTRS 0xEE00
 /* Direcciones de memoria */
 /* -------------------------------------------------------------------------- */
 

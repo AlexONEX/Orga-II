@@ -41,6 +41,9 @@ gdt_entry_t gdt[GDT_COUNT] = {
 
     [GDT_IDX_CODE_0] =
         {
+            // <COMPLETAR> con el segmento de codigo nivel 0
+            // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
+            // con lo correspondiente acorde a lo solicitado en el enunciado
             .limit_15_0 = GDT_LIMIT_LOW(GDT_LIMIT_4KIB(FLAT_SEGM_SIZE)),   // 0x30ff
             .limit_19_16 = GDT_LIMIT_HIGH(GDT_LIMIT_4KIB(FLAT_SEGM_SIZE)), //0x3
             .base_15_0 = 0x0000,
@@ -57,6 +60,9 @@ gdt_entry_t gdt[GDT_COUNT] = {
         },
     [GDT_IDX_CODE_3] =
         {
+            // <COMPLETAR>  con el segmento de codigo nivel 3
+            // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
+            // con lo correspondiente acorde a lo solicitado en el enunciado
 	    .limit_15_0 = GDT_LIMIT_LOW(GDT_LIMIT_4KIB(FLAT_SEGM_SIZE)),
             .limit_19_16 = GDT_LIMIT_HIGH(GDT_LIMIT_4KIB(FLAT_SEGM_SIZE)),
             .base_15_0 = 0x0000,
@@ -73,6 +79,9 @@ gdt_entry_t gdt[GDT_COUNT] = {
         },
     [GDT_IDX_DATA_0] =
         {
+            // <COMPLETAR> con el segmento de datos nivel 0
+            // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
+            // con lo correspondiente acorde a lo solicitado en el enunciado
             .limit_15_0 = GDT_LIMIT_LOW(GDT_LIMIT_4KIB(FLAT_SEGM_SIZE)),
             .limit_19_16 = GDT_LIMIT_HIGH(GDT_LIMIT_4KIB(FLAT_SEGM_SIZE)),
             .base_15_0 = 0x0000,
@@ -89,6 +98,9 @@ gdt_entry_t gdt[GDT_COUNT] = {
         },
     [GDT_IDX_DATA_3] =
         {
+            // <COMPLETAR> con el segmento de datos nivel 3
+            // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
+            // con lo correspondiente acorde a lo solicitado en el enunciado
             .limit_15_0 = GDT_LIMIT_LOW(GDT_LIMIT_4KIB(FLAT_SEGM_SIZE)),
             .limit_19_16 = GDT_LIMIT_HIGH(GDT_LIMIT_4KIB(FLAT_SEGM_SIZE)),
             .base_15_0 = 0x0000,
