@@ -193,7 +193,7 @@ paddr_t mmu_init_task_dir(paddr_t phy_start) {
   zero_page(cr3);
 
   //COMPLETAR: descomenten esta linea para reservar una pagina para la pila de usuarix
-  //const paddr_t stack = mmu_next_free_user_page();
+  const paddr_t stack = mmu_next_free_user_page();
 
   // No podemos poner en 0 el stack porque esta pagina fisica
   // no es parte de la memoria del kernel.
