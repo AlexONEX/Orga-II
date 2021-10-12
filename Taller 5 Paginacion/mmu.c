@@ -84,14 +84,14 @@ paddr_t mmu_init_kernel_dir(void) {
           "Rango de Identity Mapping invalido.");
 
   kpd[0] = (pd_entry_t){
-      .attrs = 0x1,  // 000000000001  P, S R/W no quiero sobreescribir directorios mapeados 1 a 1 mem fisca. (KERNEL)      
-      .pt = KERNEL_PAGE_DIR,   //Directory entry en .pt apunta a una tabla? Si? => apunta a 26k hasta 27
+      .attrs = 0x2,           //000000000011  P, R/W       
+      .pt = KERNEL_PAGE_DIR,   
   };
 
   for (size_t i = 0; i <= VIRT_PAGE_TABLE(identity_mapping_end); i++) {
     kpt[i] = (pt_entry_t){
-        .attrs = 0x1,                     // 000000000001. 
-        .page =  KERNEL_PAGE_TABLE_0+i,    //Table Entry apunta a una pagina? Si? Abajo de 27k hasta 40k
+        .attrs = 0x2,                    //0000000000011. 
+        .page =  KERNEL_PAGE_TABLE_0,    //Table Entry apunta a una pagina? Si? 
     };
   }
 
