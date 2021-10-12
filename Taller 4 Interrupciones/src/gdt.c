@@ -12,7 +12,7 @@
 GDT_COUNT es la cantidad de líneas de la GDT y esta definido en defines.h */
 
 gdt_entry_t gdt[GDT_COUNT] = {
-    /* Descriptor nulo*/
+    /* Descriptor nulo*/    
     /* Offset = 0x00 */
     [GDT_IDX_NULL_DESC] =
         {

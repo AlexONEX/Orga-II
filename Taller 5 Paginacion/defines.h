@@ -11,11 +11,11 @@
 
 /* MMU */
 /* -------------------------------------------------------------------------- */
-#define VIRT_PAGE_OFFSET(X) ((X)&0xFFF)
-#define VIRT_PAGE_TABLE(X)  (((X) >> 12) & 0x03FF)
-#define VIRT_PAGE_DIR(X)    (((X) >> 22) & 0x03FF)
-#define CR3_TO_PAGE_DIR(X)  ((X) & (~0xFFF))
-#define MMU_ENTRY_PADDR(X)  ((X) << 12)
+#define VIRT_PAGE_OFFSET(X) ((X)&0xFFF)             /*Obtengo Offset de Dir Virtual. */
+#define VIRT_PAGE_TABLE(X)  (((X) >> 12) & 0x03FF)  /*Obtengo la direccion de la Page Table*/
+#define VIRT_PAGE_DIR(X)    (((X) >> 22) & 0x03FF)  /*Obtengo direccion de Table Directory*/
+#define CR3_TO_PAGE_DIR(X)  ((X) & (~0xFFF))        /*Limpio 12 bits lsb de CR3*/
+#define MMU_ENTRY_PADDR(X)  ((X) << 12)             /*Limpio los atributos y me quedo con las direcciones xq deben estar 12 bits en 0*/
 
 #define MMU_P (1 << 0)
 #define MMU_W (1 << 1)
