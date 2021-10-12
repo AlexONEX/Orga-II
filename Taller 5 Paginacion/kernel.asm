@@ -101,10 +101,15 @@ modo_protegido:
     ; Inicializar el manejador de memoria
     call mmu_init
     ; Inicializar el directorio de paginas   ;COMPLETAR:
-    
+    call mmu_init_kernel_dir
     ; Cargar directorio de paginas  ;COMPLETAR:
-    
+    mov eax, 0x25000; 
     ; Habilitar paginacion  ;COMPLETAR:    
+    mov cr3, eax
+    mov eax, cr0
+    or eax, 0x80000001
+    mov cr0, eax
+    xchg bx,bx
     
     ; Quiten este jump una vez que terminen mmu_init_task_dir     
     ; Para poder probar el nuevo CR3; COMPLETAR:
