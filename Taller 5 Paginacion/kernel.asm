@@ -67,14 +67,7 @@ start:
 
     ; Setear el bit PE del registro CR0
 	mov eax, cr0
-	or eax, 0x1
-	mov cr0, eax
-
-    ; Saltar a modo protegido
-    ; Hacemos un salto largo (far jump) y pasamos al codigo de modo protegido, 
-    ; cargando los selectores de segmento de este modo
-    ; Revisen que valor tiene la constante CS_RING_0_SEL e intuyan el por que.
-	jmp CS_RING_0_SEL:modo_protegido
+	or eax, 0x1    xchg bx,bx
 
 BITS 32
 modo_protegido:
@@ -109,7 +102,7 @@ modo_protegido:
     mov eax, cr0
     or eax, 0x80000001
     mov cr0, eax
-    xchg bx,bx
+    xchg bx, bx
     
     ; Quiten este jump una vez que terminen mmu_init_task_dir     
     ; Para poder probar el nuevo CR3; COMPLETAR:

@@ -85,13 +85,13 @@ paddr_t mmu_init_kernel_dir(void) {
 
   kpd[0] = (pd_entry_t){
       .attrs = 0x1,  // 000000000001  P, S R/W no quiero sobreescribir directorios mapeados 1 a 1 mem fisca. (KERNEL)      
-      .pt = KERNEL_PAGE_DIR,   
+      .pt = KERNEL_PAGE_DIR,   //Directory entry en .pt apunta a una tabla? Si? => apunta a 26k hasta 27
   };
 
   for (size_t i = 0; i <= VIRT_PAGE_TABLE(identity_mapping_end); i++) {
     kpt[i] = (pt_entry_t){
         .attrs = 0x1,                     // 000000000001. 
-        .page =  KERNEL_PAGE_TABLE_0,    
+        .page =  KERNEL_PAGE_TABLE_0+i,    //Table Entry apunta a una pagina? Si? Abajo de 27k hasta 40k
     };
   }
 
@@ -193,7 +193,7 @@ paddr_t mmu_init_task_dir(paddr_t phy_start) {
   zero_page(cr3);
 
   //COMPLETAR: descomenten esta linea para reservar una pagina para la pila de usuarix
-  const paddr_t stack = mmu_next_free_user_page();
+  //const paddr_t stack = mmu_next_free_user_page();
 
   // No podemos poner en 0 el stack porque esta pagina fisica
   // no es parte de la memoria del kernel.
