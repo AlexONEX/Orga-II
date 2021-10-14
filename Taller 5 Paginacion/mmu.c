@@ -85,13 +85,13 @@ paddr_t mmu_init_kernel_dir(void) {
 
   kpd[0] = (pd_entry_t){
       .attrs = 0x2,           //000000000011  P, R/W       
-      .pt = KERNEL_PAGE_DIR,   
+      .pt = (uint32_t)(kpt) >> 12,   
   };
 
   for (size_t i = 0; i <= VIRT_PAGE_TABLE(identity_mapping_end); i++) {
     kpt[i] = (pt_entry_t){
         .attrs = 0x2,                    //0000000000011. 
-        .page =  KERNEL_PAGE_TABLE_0,    //Table Entry apunta a una pagina? Si? 
+        .page = (uint32_t)(i),    //Table Entry apunta a una pagina? Si? 
     };
   }
 

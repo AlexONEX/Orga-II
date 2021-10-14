@@ -67,7 +67,8 @@ start:
 
     ; Setear el bit PE del registro CR0
 	mov eax, cr0
-	or eax, 0x1    xchg bx,bx
+	or eax, 0x1
+    xchg bx,bx
 
 BITS 32
 modo_protegido:
@@ -96,7 +97,7 @@ modo_protegido:
     ; Inicializar el directorio de paginas   ;COMPLETAR:
     call mmu_init_kernel_dir
     ; Cargar directorio de paginas  ;COMPLETAR:
-    mov eax, 0x25000; 
+    ; mov eax, 0x25000; 
     ; Habilitar paginacion  ;COMPLETAR:    
     mov cr3, eax
     mov eax, cr0
