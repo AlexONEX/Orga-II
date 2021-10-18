@@ -68,7 +68,14 @@ start:
     ; Setear el bit PE del registro CR0
 	mov eax, cr0
 	or eax, 0x1
+    mov cr0, eax
     xchg bx,bx
+
+    ; Saltar a modo protegido
+    ; Hacemos un salto largo (far jump) y pasamos al codigo de modo protegido, 
+    ; cargando los selectores de segmento de este modo
+    ; Revisen que valor tiene la constante CS_RING_0_SEL e intuyan el por que.
+	jmp CS_RING_0_SEL:modo_protegido
 
 BITS 32
 modo_protegido:
