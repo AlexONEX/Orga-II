@@ -114,10 +114,10 @@ void mmu_map_page(uint32_t cr3, vaddr_t virt, paddr_t phy, uint32_t attrs) {
   if ((pd[pdi].attrs & MMU_P) == 0) {
     // No existe entrada en el directorio de tablas de paginas.
     // Debemos crear un page table y mapearlo.
-    paddr_t new_pt = 0; //COMPLETAR: a donde pedimos la pagina nueva?
+    paddr_t new_pt = mmu_next_free_kernel_page(); //COMPLETAR: a donde pedimos la pagina nueva?
     zero_page(new_pt);
-    pd[pdi].pt = 0; // COMPLETAR: referencia a la parte alta de la dir. de la tabla de paginas
-    pd[pdi].attrs |= 0; // COMPLETAR: que atributo debemos cambiar de forma explicita?
+    pd[pdi].pt = VIRT_PAGE_TABLE(new_pt); // COMPLETAR: referencia a la parte alta de la dir. de la tabla de paginas
+    pd[pdi].attrs |= MMU_P; // COMPLETAR: que atributo debemos cambiar de forma explicita?
   }
   pd[pdi].attrs |= attrs;
 
@@ -179,6 +179,10 @@ static inline void copy_page(paddr_t dst_addr, paddr_t src_addr) {
     dst[i] = src[i];
   }
 
+  // Se desmapea para que si el programador o la programadora
+  // accede sin querer a las direcciones de memoria que estamos
+  // desmapeando, salte un error de una y sea mas fácil de
+  // debuggear
   mmu_unmap_page(cr3, DST_VIRT_PAGE);
   mmu_unmap_page(cr3, SRC_VIRT_PAGE);
 }
@@ -193,7 +197,7 @@ paddr_t mmu_init_task_dir(paddr_t phy_start) {
   zero_page(cr3);
 
   //COMPLETAR: descomenten esta linea para reservar una pagina para la pila de usuarix
-  //const paddr_t stack = mmu_next_free_user_page();
+  const paddr_t stack = mmu_next_free_user_page();
 
   // No podemos poner en 0 el stack porque esta pagina fisica
   // no es parte de la memoria del kernel.
@@ -208,8 +212,10 @@ paddr_t mmu_init_task_dir(paddr_t phy_start) {
   mmu_map_page(cr3, TASK_CODE_VIRTUAL + PAGE_SIZE * 0, phy_start,
                MMU_P | MMU_U);
   //mapeen la segunda pagina codigo y la pagina de stack de usuarix
-  //mmu_map_page(cr3, ??, ??, ??);
-  //mmu_map_page(cr3, ??, ??, ??);
+  mmu_map_page(cr3, TASK_CODE_VIRTUAL + PAGE_SIZE * 1,
+    phy_start + PAGE_SIZE, MMU_P | MMU_U);
+
+  mmu_map_page(cr3, TASK_STACK_BASE, stack, MMU_P | MMU_U);
 
   return cr3;
 }
