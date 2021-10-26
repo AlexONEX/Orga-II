@@ -125,6 +125,8 @@ modo_protegido:
     ; Inicializar las tareas
     call task_init
 
+    xchg bx, bx
+
     ; Inicializar la IDT
     call idt_init
 

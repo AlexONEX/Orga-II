@@ -246,6 +246,8 @@ paddr_t mmu_init_task_dir(paddr_t phy_start) {
   mmu_map_page(cr3, TASK_CODE_VIRTUAL + PAGE_SIZE * 1, phy_start + PAGE_SIZE,
                MMU_P | MMU_U);
 
+// [ 0x800 0000 -- 0x800 0fff] [0x800 1000 -- 0x800 1fff] [0x800 2000 -- 0x800 2fff] 0x800 3000
+
   mmu_map_page(cr3, TASK_CODE_VIRTUAL + PAGE_SIZE * 2, stack,
                MMU_P | MMU_U | MMU_W);
 
