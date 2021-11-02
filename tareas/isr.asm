@@ -166,7 +166,7 @@ _isr32:
     call next_clock
 	; COMPLETAR
     ; quiten la siguiente linea para poner en ejecucion el scheduler
-	jmp .fin
+	  ; jmp .fin
     call task_tick
 
     mov ecx, [tick_count]
@@ -180,7 +180,7 @@ _isr32:
 
     str bx
     cmp ax, bx
-    je .fin
+    je .fin ; por el bit de busy
 
     mov word [sched_task_selector], ax
     jmp far [sched_task_offset]
@@ -234,16 +234,16 @@ _isr98:
 
 global _isr108 ; get_id
 
-_isr108:
+_isr108: ; Devuelve qué tarea soy
   pushad
   call sched_current_task
-  mov [esp + offset_EAX], eax
+  mov [esp + offset_EAX], eax ; Sobrescribe en el stack así cuuando popad me lo pisa, me lo pisa con lo que quiero.
   popad
   iret
 
 global _isr118 ; print
 
-_isr118:
+_isr118: ; Hace print
   pushad
   push edx
   push ecx

@@ -71,7 +71,7 @@ tss_t tss_create_user_task(paddr_t code_start) {
 	  //COMPLETAR: pedir pagina de kernel para la pila de nivel cero
     paddr_t stack0_p = mmu_next_free_kernel_page();
 	  vaddr_t stack0 = (vaddr_t)(stack0_p); // Por el identity mapping
-    mmu_map_page(cr3, stack0, stack0_p, MMU_W | MMU_P | MMU_U);
+    // mmu_map_page(cr3, stack0, stack0_p, MMU_W | MMU_P | MMU_U);
 	  //COMPLETAR: a donde deberia apuntar la pila de nivel cero?
     vaddr_t esp0 = stack0 + PAGE_SIZE; // Para que arranque en las posiciones de memoria altas de la página
 	  return (tss_t){

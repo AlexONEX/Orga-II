@@ -109,7 +109,10 @@ static inline void dibujar_reloj(uint8_t task_id) {
   print(c, relojes[task_id].x, relojes[task_id].y, C_BG_BLACK | C_FG_CYAN);
 }
 
-/**
+
+// GDT [] [] [] [] [] [GDT_IDX_TASK_A_START] [] [] [] [] [GDT_IDX_TASK_B_START] [] [] [] []
+//           |                 ~            ~~ ~~ ~~ ~~ 
+/**          [tss]
  * Crea una tarea en base a su id en la tabla de tss, tipo e indice de tabla en task
  */
 static void create_task(uint8_t task_id, tipo_e tipo, uint8_t indice) {
@@ -121,7 +124,15 @@ static void create_task(uint8_t task_id, tipo_e tipo, uint8_t indice) {
   };
 
   size_t gdt_id = (tipo == TASK_A? GDT_IDX_TASK_A_START : GDT_IDX_TASK_B_START) + indice;
+
+  // tss_gdt_entry_for_task crea una entry para poner en le gdt que apunta hacia
+  // el tss de la nueva tarea generada
   gdt[gdt_id] = tss_gdt_entry_for_task(&tss_tasks[task_id]);
+
+  // Corro 3 porque el selector es un offset dentro de la GDT, y las entries de la GDT
+  // son de 2^3 bytes, entonces cada una ocupa 8 bytes.
+  // Osea el índice i de la gdt está en el offset 8*i desde el comienzo de la GDT
+  // Y 8*i = i << 3.
   sched_add_task(gdt_id << 3, task_id);
 }
 

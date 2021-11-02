@@ -101,6 +101,7 @@ uint8_t sched_current_task(){
 
 uint16_t sched_next_task(void) {
 
+  // 3, 2
   int8_t i = (last_task + 1) % MAX_TASKS;
   
   do{
