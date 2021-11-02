@@ -243,7 +243,7 @@ _isr108: ; Devuelve qué tarea soy
 
 global _isr118 ; print
 
-_isr118: ; Hace print
+_isr118: ; Hace print. Call convention, parametros ordenados, pusheo registros. 
   pushad
   push edx
   push ecx
